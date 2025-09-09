@@ -45,7 +45,7 @@ const NotebookCard = ({
   const borderClass = `border-${colorName}-200`;
 
   return <div 
-      className={`rounded-lg border ${borderClass} ${backgroundClass} p-4 hover:shadow-md transition-shadow cursor-pointer relative h-48 flex flex-col`}
+      className={`rounded-lg border border-white/30 bg-white/80 backdrop-blur-sm p-4 hover:shadow-lg hover:bg-white/90 transition-all cursor-pointer relative h-48 flex flex-col`}
     >
       <div className="absolute top-3 right-3" data-delete-action="true">
         <AlertDialog open={showDeleteDialog} onOpenChange={setShowDeleteDialog}>

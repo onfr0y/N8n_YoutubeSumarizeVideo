@@ -70,7 +70,7 @@ const NotebookGrid = () => {
   }
 
   return <div>
-      <div className="flex items-center justify-between mb-8">
+      <div className="flex items-center justify-between mb-8 bg-white/80 backdrop-blur-sm rounded-lg p-4">
         <Button className="bg-black hover:bg-gray-800 text-white rounded-full px-6" onClick={handleCreateNotebook} disabled={isCreating}>
           {isCreating ? 'Creating...' : '+ Create new'}
         </Button>
@@ -78,7 +78,7 @@ const NotebookGrid = () => {
         <div className="flex items-center space-x-4">
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <div className="flex items-center space-x-2 bg-white rounded-lg border px-3 py-2 cursor-pointer hover:bg-gray-50 transition-colors">
+              <div className="flex items-center space-x-2 bg-white/90 backdrop-blur-sm rounded-lg border border-white/30 px-3 py-2 cursor-pointer hover:bg-white/95 transition-colors">
                 <span className="text-sm text-gray-600">{sortBy}</span>
                 <ChevronDown className="h-4 w-4 text-gray-400" />
               </div>

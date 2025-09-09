@@ -169,7 +169,7 @@ const ChatArea = ({
   return <div className="flex-1 flex flex-col h-full overflow-hidden">
       {hasSource ? <div className="flex-1 flex flex-col h-full overflow-hidden">
           {/* Chat Header */}
-          <div className="p-4 border-b border-gray-200 flex-shrink-0">
+          <div className="p-4 border-b border-white/20 flex-shrink-0 bg-white/70 backdrop-blur-sm">
             <div className="max-w-4xl mx-auto flex items-center justify-between">
               <h2 className="text-lg font-medium text-gray-900">Chat</h2>
               {shouldShowRefreshButton && <Button variant="ghost" size="sm" onClick={handleRefreshChat} disabled={isDeletingChatHistory || isChatDisabled} className="flex items-center space-x-2">
@@ -181,7 +181,7 @@ const ChatArea = ({
 
           <ScrollArea className="flex-1 h-full" ref={scrollAreaRef}>
             {/* Document Summary */}
-            <div className="p-8 border-b border-gray-200">
+            <div className="p-8 border-b border-white/20 bg-white/60 backdrop-blur-sm">
               <div className="max-w-4xl mx-auto">
                 <div className="flex items-center space-x-4 mb-6">
                   <div className="w-10 h-10 flex items-center justify-center bg-transparent">
@@ -195,7 +195,7 @@ const ChatArea = ({
                   </div>
                 </div>
                 
-                <div className="bg-gray-50 rounded-lg p-6 mb-6">
+                <div className="bg-white/80 backdrop-blur-sm rounded-lg p-6 mb-6 border border-white/30">
                   {isGenerating ? <div className="flex items-center space-x-2 text-gray-600">
                       
                       <p>AI is analyzing your source and generating a title and description...</p>
@@ -243,7 +243,7 @@ const ChatArea = ({
           </ScrollArea>
 
           {/* Chat Input - Fixed at bottom */}
-          <div className="p-6 border-t border-gray-200 flex-shrink-0">
+          <div className="p-6 border-t border-white/20 flex-shrink-0 bg-white/70 backdrop-blur-sm">
             <div className="max-w-4xl mx-auto">
               <div className="flex space-x-4">
                 <div className="flex-1 relative">
@@ -304,7 +304,7 @@ const ChatArea = ({
         </div>}
       
       {/* Footer */}
-      <div className="p-4 border-t border-gray-200 flex-shrink-0">
+      <div className="p-4 border-t border-white/20 flex-shrink-0 bg-white/70 backdrop-blur-sm">
         <p className="text-center text-sm text-gray-500">InsightsLM can be inaccurate; please double-check its responses.</p>
       </div>
       

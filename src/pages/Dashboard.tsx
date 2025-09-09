@@ -94,11 +94,11 @@ const Dashboard = () => {
   }
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-transparent">
       <DashboardHeader userEmail={user?.email} />
       
       <main className="max-w-7xl mx-auto px-6 py-[60px]">
-        <div className="mb-8">
+        <div className="mb-8 bg-white/80 backdrop-blur-sm rounded-lg p-6">
           <h1 className="font-medium text-gray-900 mb-2 text-5xl">Welcome to InsightsLM</h1>
         </div>
 

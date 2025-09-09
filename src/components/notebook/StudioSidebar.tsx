@@ -210,17 +210,17 @@ const StudioSidebar = ({
   };
 
   if (isEditingMode) {
-    return <div className="w-full bg-gray-50 border-l border-gray-200 flex flex-col h-full overflow-hidden">
+    return <div className="w-full bg-white/70 backdrop-blur-sm border-l border-white/20 flex flex-col h-full overflow-hidden">
         <NoteEditor note={editingNote || undefined} onSave={handleSaveNote} onDelete={editingNote ? handleDeleteNote : undefined} onCancel={handleCancel} isLoading={isCreating || isUpdating || isDeleting} onCitationClick={onCitationClick} />
       </div>;
   }
 
-  return <div className="w-full bg-gray-50 border-l border-gray-200 flex flex-col h-full overflow-hidden">
+  return <div className="w-full bg-white/70 backdrop-blur-sm border-l border-white/20 flex flex-col h-full overflow-hidden">
       <div className="p-4 border-b border-gray-200 flex-shrink-0">
         <h2 className="text-lg font-medium text-gray-900 mb-4">Studio</h2>
         
         {/* Audio Overview */}
-        <Card className="p-4 mb-4 border border-gray-200">
+        <Card className="p-4 mb-4 border border-white/30 bg-white/80 backdrop-blur-sm">
           <div className="flex items-center justify-between mb-3">
             <h3 className="font-medium text-gray-900">Audio Overview</h3>
           </div>

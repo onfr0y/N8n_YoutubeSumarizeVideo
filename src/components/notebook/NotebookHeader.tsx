@@ -60,7 +60,7 @@ const NotebookHeader = ({ title, notebookId }: NotebookHeaderProps) => {
   };
 
   return (
-    <header className="bg-white/80 backdrop-blur-sm border-b border-white/20 px-6 py-4">
+    <header className="bg-white/5 backdrop-blur-xl border-b border-white/20 px-6 py-4">
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-4">
           <div className="flex items-center space-x-2">
@@ -76,13 +76,13 @@ const NotebookHeader = ({ title, notebookId }: NotebookHeaderProps) => {
                 onChange={(e) => setEditedTitle(e.target.value)}
                 onKeyDown={handleKeyDown}
                 onBlur={handleBlur}
-                className="text-lg font-medium text-gray-900 border-none shadow-none p-0 h-auto focus-visible:ring-0 min-w-[300px] w-auto"
+                className="text-lg font-medium text-white bg-transparent border-none shadow-none p-0 h-auto focus-visible:ring-0 min-w-[300px] w-auto"
                 autoFocus
                 disabled={isUpdating}
               />
             ) : (
               <span 
-                className="text-lg font-medium text-gray-900 cursor-pointer hover:bg-gray-50 rounded px-2 py-1 transition-colors"
+                className="text-lg font-medium text-white cursor-pointer hover:bg-white/10 rounded px-2 py-1 transition-colors"
                 onClick={handleTitleClick}
               >
                 {title}

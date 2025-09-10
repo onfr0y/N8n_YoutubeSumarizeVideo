@@ -45,12 +45,12 @@ const NotebookCard = ({
   const borderClass = `border-${colorName}-200`;
 
   return <div 
-      className={`rounded-lg border border-white/30 bg-white/80 backdrop-blur-sm p-4 hover:shadow-lg hover:bg-white/90 transition-all cursor-pointer relative h-48 flex flex-col`}
+      className={`rounded-3xl border border-white/30 bg-white/10 backdrop-blur-xl p-4 hover:shadow-lg hover:bg-white/20 transition-all cursor-pointer relative h-48 flex flex-col`}
     >
       <div className="absolute top-3 right-3" data-delete-action="true">
         <AlertDialog open={showDeleteDialog} onOpenChange={setShowDeleteDialog}>
           <AlertDialogTrigger asChild>
-            <button onClick={handleDeleteClick} className="p-1 hover:bg-red-50 rounded text-gray-400 hover:text-red-500 transition-colors delete-button" disabled={isDeleting} data-delete-action="true">
+            <button onClick={handleDeleteClick} className="p-1 hover:bg-red-500/20 rounded text-white/60 hover:text-red-400 transition-colors delete-button" disabled={isDeleting} data-delete-action="true">
               <Trash2 className="h-4 w-4" />
             </button>
           </AlertDialogTrigger>
@@ -76,10 +76,11 @@ const NotebookCard = ({
       </div>
       
       <h3 className="text-gray-900 mb-2 pr-6 line-clamp-2 text-2xl font-normal flex-grow">
+      <h3 className="text-white mb-2 pr-6 line-clamp-2 text-2xl font-normal flex-grow">
         {notebook.title}
       </h3>
       
-      <div className="flex items-center justify-between text-sm text-gray-500 mt-auto">
+      <div className="flex items-center justify-between text-sm text-white/70 mt-auto">
         <span>{notebook.date} • {notebook.sources} source{notebook.sources !== 1 ? 's' : ''}</span>
       </div>
     </div>;

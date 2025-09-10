@@ -98,8 +98,8 @@ const Dashboard = () => {
       <DashboardHeader userEmail={user?.email} />
       
       <main className="max-w-7xl mx-auto px-6 py-[60px]">
-        <div className="mb-8 bg-white/80 backdrop-blur-sm rounded-lg p-6">
-          <h1 className="font-medium text-gray-900 mb-2 text-5xl">Welcome to InsightsLM</h1>
+        <div className="mb-8 bg-white/10 backdrop-blur-xl rounded-3xl p-6 border border-white/20">
+          <h1 className="font-medium text-white mb-2 text-5xl">Welcome to InsightsLM</h1>
         </div>
 
         {hasNotebooks ? <NotebookGrid /> : <EmptyDashboard />}

@@ -226,10 +226,10 @@ const SourcesSidebar = ({
   }
 
   return (
-    <div className="w-full bg-white/70 backdrop-blur-sm border-r border-white/20 flex flex-col h-full overflow-hidden">
+    <div className="w-full bg-white/5 backdrop-blur-xl border-r border-white/20 flex flex-col h-full overflow-hidden">
       <div className="p-4 border-b border-gray-200 flex-shrink-0">
         <div className="flex items-center justify-between mb-4">
-          <h2 className="text-lg font-medium text-gray-900">Sources</h2>
+          <h2 className="text-lg font-medium text-white">Sources</h2>
         </div>
         
         <div className="flex space-x-2">

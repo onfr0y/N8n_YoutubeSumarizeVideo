@@ -210,19 +210,19 @@ const StudioSidebar = ({
   };
 
   if (isEditingMode) {
-    return <div className="w-full bg-white/70 backdrop-blur-sm border-l border-white/20 flex flex-col h-full overflow-hidden">
+    return <div className="w-full bg-white/5 backdrop-blur-xl border-l border-white/20 flex flex-col h-full overflow-hidden">
         <NoteEditor note={editingNote || undefined} onSave={handleSaveNote} onDelete={editingNote ? handleDeleteNote : undefined} onCancel={handleCancel} isLoading={isCreating || isUpdating || isDeleting} onCitationClick={onCitationClick} />
       </div>;
   }
 
-  return <div className="w-full bg-white/70 backdrop-blur-sm border-l border-white/20 flex flex-col h-full overflow-hidden">
+  return <div className="w-full bg-white/5 backdrop-blur-xl border-l border-white/20 flex flex-col h-full overflow-hidden">
       <div className="p-4 border-b border-gray-200 flex-shrink-0">
-        <h2 className="text-lg font-medium text-gray-900 mb-4">Studio</h2>
+        <h2 className="text-lg font-medium text-white mb-4">Studio</h2>
         
         {/* Audio Overview */}
-        <Card className="p-4 mb-4 border border-white/30 bg-white/80 backdrop-blur-sm">
+        <Card className="p-4 mb-4 border border-white/30 bg-white/10 backdrop-blur-xl">
           <div className="flex items-center justify-between mb-3">
-            <h3 className="font-medium text-gray-900">Audio Overview</h3>
+            <h3 className="font-medium text-white">Audio Overview</h3>
           </div>
 
           {hasValidAudio && !audioError && currentStatus !== 'generating' && !isAutoRefreshing ? <AudioPlayer 
@@ -283,11 +283,11 @@ const StudioSidebar = ({
         {/* Notes Section */}
         <div className="mb-4">
           <div className="flex items-center justify-between mb-3">
-            <h3 className="font-medium text-gray-900">Notes</h3>
+            <h3 className="font-medium text-white">Notes</h3>
             
           </div>
           
-          <Button variant="outline" size="sm" className="w-full mb-4" onClick={handleCreateNote}>
+          <Button variant="outline" size="sm" className="w-full mb-4 bg-white/10 border-white/30 text-white hover:bg-white/20 backdrop-blur-sm" onClick={handleCreateNote}>
             <Plus className="h-4 w-4 mr-2" />
             Add note
           </Button>

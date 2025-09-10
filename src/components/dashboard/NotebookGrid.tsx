@@ -70,20 +70,20 @@ const NotebookGrid = () => {
   }
 
   return <div>
-      <div className="flex items-center justify-between mb-8 bg-white/80 backdrop-blur-sm rounded-lg p-4">
-        <Button className="bg-black hover:bg-gray-800 text-white rounded-full px-6" onClick={handleCreateNotebook} disabled={isCreating}>
+      <div className="flex items-center justify-between mb-8 bg-white/10 backdrop-blur-xl rounded-3xl p-4 border border-white/20">
+        <Button className="bg-white/20 hover:bg-white/30 text-white rounded-full px-6 border border-white/30 backdrop-blur-sm" onClick={handleCreateNotebook} disabled={isCreating}>
           {isCreating ? 'Creating...' : '+ Create new'}
         </Button>
         
         <div className="flex items-center space-x-4">
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <div className="flex items-center space-x-2 bg-white/90 backdrop-blur-sm rounded-lg border border-white/30 px-3 py-2 cursor-pointer hover:bg-white/95 transition-colors">
-                <span className="text-sm text-gray-600">{sortBy}</span>
-                <ChevronDown className="h-4 w-4 text-gray-400" />
+              <div className="flex items-center space-x-2 bg-white/10 backdrop-blur-xl rounded-2xl border border-white/30 px-3 py-2 cursor-pointer hover:bg-white/20 transition-colors">
+                <span className="text-sm text-white/80">{sortBy}</span>
+                <ChevronDown className="h-4 w-4 text-white/60" />
               </div>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-48">
+            <DropdownMenuContent align="end" className="w-48 bg-white/10 backdrop-blur-xl border-white/30">
               <DropdownMenuItem onClick={() => setSortBy('Most recent')} className="flex items-center justify-between">
                 Most recent
                 {sortBy === 'Most recent' && <Check className="h-4 w-4" />}

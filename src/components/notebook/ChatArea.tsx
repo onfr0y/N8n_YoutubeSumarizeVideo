@@ -169,9 +169,9 @@ const ChatArea = ({
   return <div className="flex-1 flex flex-col h-full overflow-hidden">
       {hasSource ? <div className="flex-1 flex flex-col h-full overflow-hidden">
           {/* Chat Header */}
-          <div className="p-4 border-b border-white/20 flex-shrink-0 bg-white/70 backdrop-blur-sm">
+          <div className="p-4 border-b border-white/20 flex-shrink-0 bg-white/5 backdrop-blur-xl">
             <div className="max-w-4xl mx-auto flex items-center justify-between">
-              <h2 className="text-lg font-medium text-gray-900">Chat</h2>
+              <h2 className="text-lg font-medium text-white">Chat</h2>
               {shouldShowRefreshButton && <Button variant="ghost" size="sm" onClick={handleRefreshChat} disabled={isDeletingChatHistory || isChatDisabled} className="flex items-center space-x-2">
                   <RefreshCw className={`h-4 w-4 ${isDeletingChatHistory ? 'animate-spin' : ''}`} />
                   <span>{isDeletingChatHistory ? 'Clearing...' : 'Clear Chat'}</span>
@@ -181,7 +181,7 @@ const ChatArea = ({
 
           <ScrollArea className="flex-1 h-full" ref={scrollAreaRef}>
             {/* Document Summary */}
-            <div className="p-8 border-b border-white/20 bg-white/60 backdrop-blur-sm">
+            <div className="p-8 border-b border-white/20 bg-white/5 backdrop-blur-xl">
               <div className="max-w-4xl mx-auto">
                 <div className="flex items-center space-x-4 mb-6">
                   <div className="w-10 h-10 flex items-center justify-center bg-transparent">
@@ -189,17 +189,20 @@ const ChatArea = ({
                   </div>
                   <div>
                     <h1 className="text-2xl font-medium text-gray-900">
+                    <h1 className="text-2xl font-medium text-white">
                       {isGenerating ? 'Generating content...' : notebook?.title || 'Untitled Notebook'}
                     </h1>
-                    <p className="text-sm text-gray-600">{sourceCount} source{sourceCount !== 1 ? 's' : ''}</p>
+                    <p className="text-sm text-white/70">{sourceCount} source{sourceCount !== 1 ? 's' : ''}</p>
                   </div>
                 </div>
                 
-                <div className="bg-white/80 backdrop-blur-sm rounded-lg p-6 mb-6 border border-white/30">
+                <div className="bg-white/10 backdrop-blur-xl rounded-3xl p-6 mb-6 border border-white/30">
                   {isGenerating ? <div className="flex items-center space-x-2 text-gray-600">
+                   {isGenerating ? <div className="flex items-center space-x-2 text-white/70">
                       
                       <p>AI is analyzing your source and generating a title and description...</p>
                     </div> : <MarkdownRenderer content={notebook?.description || 'No description available for this notebook.'} className="prose prose-gray max-w-none text-gray-700 leading-relaxed" />}
+                    </div> : <MarkdownRenderer content={notebook?.description || 'No description available for this notebook.'} className="prose prose-gray max-w-none text-white/90 leading-relaxed" />}
                 </div>
 
                 {/* Chat Messages */}
@@ -243,16 +246,16 @@ const ChatArea = ({
           </ScrollArea>
 
           {/* Chat Input - Fixed at bottom */}
-          <div className="p-6 border-t border-white/20 flex-shrink-0 bg-white/70 backdrop-blur-sm">
+          <div className="p-6 border-t border-white/20 flex-shrink-0 bg-white/5 backdrop-blur-xl">
             <div className="max-w-4xl mx-auto">
               <div className="flex space-x-4">
                 <div className="flex-1 relative">
-                  <Input placeholder={getPlaceholderText()} value={message} onChange={e => setMessage(e.target.value)} onKeyDown={e => e.key === 'Enter' && !isChatDisabled && !isSending && !pendingUserMessage && handleSendMessage()} className="pr-12" disabled={isChatDisabled || isSending || !!pendingUserMessage} />
-                  <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-sm text-gray-500">
+                  <Input placeholder={getPlaceholderText()} value={message} onChange={e => setMessage(e.target.value)} onKeyDown={e => e.key === 'Enter' && !isChatDisabled && !isSending && !pendingUserMessage && handleSendMessage()} className="pr-12 bg-white/10 border-white/30 text-white placeholder:text-white/50 backdrop-blur-sm" disabled={isChatDisabled || isSending || !!pendingUserMessage} />
+                  <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-sm text-white/60">
                     {sourceCount} source{sourceCount !== 1 ? 's' : ''}
                   </div>
                 </div>
-                <Button onClick={() => handleSendMessage()} disabled={!message.trim() || isChatDisabled || isSending || !!pendingUserMessage}>
+                <Button onClick={() => handleSendMessage()} disabled={!message.trim() || isChatDisabled || isSending || !!pendingUserMessage} className="bg-white/20 hover:bg-white/30 border-white/30 text-white backdrop-blur-sm">
                   {isSending || pendingUserMessage ? <Loader2 className="h-4 w-4 animate-spin" /> : <Send className="h-4 w-4" />}
                 </Button>
               </div>
@@ -304,8 +307,8 @@ const ChatArea = ({
         </div>}
       
       {/* Footer */}
-      <div className="p-4 border-t border-white/20 flex-shrink-0 bg-white/70 backdrop-blur-sm">
-        <p className="text-center text-sm text-gray-500">InsightsLM can be inaccurate; please double-check its responses.</p>
+      <div className="p-4 border-t border-white/20 flex-shrink-0 bg-white/5 backdrop-blur-xl">
+        <p className="text-center text-sm text-white/60">InsightsLM can be inaccurate; please double-check its responses.</p>
       </div>
       
       {/* Add Sources Dialog */}

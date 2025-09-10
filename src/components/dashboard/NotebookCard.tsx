@@ -87,3 +87,5 @@ const NotebookCard = ({
 };
 
 export default NotebookCard;
+
+}

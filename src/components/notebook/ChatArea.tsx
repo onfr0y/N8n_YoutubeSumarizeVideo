@@ -188,7 +188,6 @@ const ChatArea = ({
                     {isGenerating ? <Loader2 className="text-black font-normal w-10 h-10 animate-spin" /> : <span className="text-[40px] leading-none">{notebook?.icon || '☕'}</span>}
                   </div>
                   <div>
-                    <h1 className="text-2xl font-medium text-gray-900">
                     <h1 className="text-2xl font-medium text-white">
                       {isGenerating ? 'Generating content...' : notebook?.title || 'Untitled Notebook'}
                     </h1>
@@ -197,11 +196,8 @@ const ChatArea = ({
                 </div>
                 
                 <div className="bg-white/10 backdrop-blur-xl rounded-3xl p-6 mb-6 border border-white/30">
-                  {isGenerating ? <div className="flex items-center space-x-2 text-gray-600">
-                   {isGenerating ? <div className="flex items-center space-x-2 text-white/70">
-                      
+                  {isGenerating ? <div className="flex items-center space-x-2 text-white/70">
                       <p>AI is analyzing your source and generating a title and description...</p>
-                    </div> : <MarkdownRenderer content={notebook?.description || 'No description available for this notebook.'} className="prose prose-gray max-w-none text-gray-700 leading-relaxed" />}
                     </div> : <MarkdownRenderer content={notebook?.description || 'No description available for this notebook.'} className="prose prose-gray max-w-none text-white/90 leading-relaxed" />}
                 </div>
 

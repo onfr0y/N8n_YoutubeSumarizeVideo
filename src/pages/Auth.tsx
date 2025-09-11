@@ -9,7 +9,7 @@ const Auth = () => {
             <Logo size="lg" />
           </div>
           <h1 className="text-3xl font-bold text-white mb-2">InsightsLM</h1>
-          <h1 className="text-3xl font-bold text-white mb-2">fasterThanturbolearn</h1>
+          <h1 className="text-3xl font-bold text-white mb-2">faster than turbo learn</h1>
           <p className="text-white/80">Your AI-powered knowledge companion</p>
         </div>
         <div className="bg-white/10 backdrop-blur-xl rounded-3xl border border-white/20">

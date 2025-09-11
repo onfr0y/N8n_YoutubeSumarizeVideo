@@ -304,7 +304,7 @@ const ChatArea = ({
       
       {/* Footer */}
       <div className="p-4 border-t border-white/20 flex-shrink-0 bg-white/5 backdrop-blur-xl">
-        <p className="text-center text-sm text-white/60">fasterThanturbolearn can be inaccurate; please double-check its responses.</p>
+        <p className="text-center text-sm text-white/60">faster than turbo learn can be inaccurate; please double-check its responses.</p>
       </div>
       
       {/* Add Sources Dialog */}

@@ -99,7 +99,7 @@ const Dashboard = () => {
       
       <main className="max-w-7xl mx-auto px-6 py-[60px]">
         <div className="mb-8 bg-white/10 backdrop-blur-xl rounded-3xl p-6 border border-white/20">
-          <h1 className="font-medium text-white mb-2 text-5xl">Welcome to fasterThanturbolearn</h1>
+          <h1 className="font-medium text-white mb-2 text-5xl">Welcome to faster than turbo learn</h1>
         </div>
 
         {hasNotebooks ? <NotebookGrid /> : <EmptyDashboard />}

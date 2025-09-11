@@ -76,16 +76,13 @@ const NotebookCard = ({
       </div>
       
       <h3 className="text-gray-900 mb-2 pr-6 line-clamp-2 text-2xl font-normal flex-grow">
-      <h3 className="text-white mb-2 pr-6 line-clamp-2 text-2xl font-normal flex-grow">
         {notebook.title}
       </h3>
       
       <div className="flex items-center justify-between text-sm text-white/70 mt-auto">
         <span>{notebook.date} • {notebook.sources} source{notebook.sources !== 1 ? 's' : ''}</span>
       </div>
-    </div>;
+    </div>
 };
 
 export default NotebookCard;
-
-}

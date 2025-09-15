@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 import { User, Session } from '@supabase/supabase-js';
 import { supabase } from '@/integrations/supabase/client';
@@ -34,43 +33,6 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
   const updateAuthState = async (newSession: Session | null) => {
     console.log('AuthContext: Updating auth state:', newSession?.user?.email || 'No session');
-    
-    // If we have a new session with a user, ensure profile exists
-    if (newSession?.user) {
-      try {
-        // Check if profile exists
-        const { data: existingProfile, error: profileError } = await supabase
-          .from('profiles')
-          .select('id')
-          .eq('id', newSession.user.id)
-          .single();
-
-        // If profile doesn't exist, create it
-        if (profileError && profileError.code === 'PGRST116') {
-          console.log('AuthContext: Creating user profile...');
-          const { error: insertError } = await supabase
-            .from('profiles')
-            .insert({
-              id: newSession.user.id,
-              email: newSession.user.email || '',
-              full_name: newSession.user.user_metadata?.full_name || null,
-              avatar_url: newSession.user.user_metadata?.avatar_url || null,
-            });
-
-          if (insertError) {
-            console.error('AuthContext: Error creating profile:', insertError);
-            // Don't throw here, as the user is still authenticated
-          } else {
-            console.log('AuthContext: Profile created successfully');
-          }
-        } else if (profileError) {
-          console.error('AuthContext: Error checking profile:', profileError);
-        }
-      } catch (err) {
-        console.error('AuthContext: Unexpected error handling profile:', err);
-      }
-    }
-    
     
     // If we have a new session with a user, ensure profile exists
     if (newSession?.user) {

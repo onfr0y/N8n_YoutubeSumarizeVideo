@@ -34,6 +34,9 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   const updateAuthState = async (newSession: Session | null) => {
     console.log('AuthContext: Updating auth state:', newSession?.user?.email || 'No session');
     
+    setSession(newSession);
+    setUser(newSession?.user ?? null);
+    
     // If we have a new session with a user, ensure profile exists
     if (newSession?.user) {
       try {
@@ -67,11 +70,9 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         }
       } catch (err) {
         console.error('AuthContext: Unexpected error handling profile:', err);
+        // Don't let profile creation errors block the auth flow
       }
     }
-    
-    setSession(newSession);
-    setUser(newSession?.user ?? null);
     
     // Clear any previous errors on successful auth
     if (newSession && error) {
@@ -152,7 +153,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         // For other events, update state if there's an actual change
         if (session?.access_token !== newSession?.access_token) {
           await updateAuthState(newSession);
-          if (loading) setLoading(false);
+          setLoading(false);
         }
       }
     );

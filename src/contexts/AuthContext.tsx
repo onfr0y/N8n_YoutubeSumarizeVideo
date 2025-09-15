@@ -32,8 +32,82 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  const updateAuthState = (newSession: Session | null) => {
+  const updateAuthState = async (newSession: Session | null) => {
     console.log('AuthContext: Updating auth state:', newSession?.user?.email || 'No session');
+    
+    // If we have a new session with a user, ensure profile exists
+    if (newSession?.user) {
+      try {
+        // Check if profile exists
+        const { data: existingProfile, error: profileError } = await supabase
+          .from('profiles')
+          .select('id')
+          .eq('id', newSession.user.id)
+          .single();
+
+        // If profile doesn't exist, create it
+        if (profileError && profileError.code === 'PGRST116') {
+          console.log('AuthContext: Creating user profile...');
+          const { error: insertError } = await supabase
+            .from('profiles')
+            .insert({
+              id: newSession.user.id,
+              email: newSession.user.email || '',
+              full_name: newSession.user.user_metadata?.full_name || null,
+              avatar_url: newSession.user.user_metadata?.avatar_url || null,
+            });
+
+          if (insertError) {
+            console.error('AuthContext: Error creating profile:', insertError);
+            // Don't throw here, as the user is still authenticated
+          } else {
+            console.log('AuthContext: Profile created successfully');
+          }
+        } else if (profileError) {
+          console.error('AuthContext: Error checking profile:', profileError);
+        }
+      } catch (err) {
+        console.error('AuthContext: Unexpected error handling profile:', err);
+      }
+    }
+    
+    
+    // If we have a new session with a user, ensure profile exists
+    if (newSession?.user) {
+      try {
+        // Check if profile exists
+        const { data: existingProfile, error: profileError } = await supabase
+          .from('profiles')
+          .select('id')
+          .eq('id', newSession.user.id)
+          .single();
+
+        // If profile doesn't exist, create it
+        if (profileError && profileError.code === 'PGRST116') {
+          console.log('AuthContext: Creating user profile...');
+          const { error: insertError } = await supabase
+            .from('profiles')
+            .insert({
+              id: newSession.user.id,
+              email: newSession.user.email || '',
+              full_name: newSession.user.user_metadata?.full_name || null,
+              avatar_url: newSession.user.user_metadata?.avatar_url || null,
+            });
+
+          if (insertError) {
+            console.error('AuthContext: Error creating profile:', insertError);
+            // Don't throw here, as the user is still authenticated
+          } else {
+            console.log('AuthContext: Profile created successfully');
+          }
+        } else if (profileError) {
+          console.error('AuthContext: Error checking profile:', profileError);
+        }
+      } catch (err) {
+        console.error('AuthContext: Unexpected error handling profile:', err);
+      }
+    }
+    
     setSession(newSession);
     setUser(newSession?.user ?? null);
     
@@ -94,7 +168,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
     // Set up auth state listener FIRST
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      (event, newSession) => {
+      async (event, newSession) => {
         if (!mounted) return;
         
         console.log('AuthContext: Auth state changed:', event, newSession?.user?.email || 'No session');
@@ -108,14 +182,14 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         
         // Handle sign in events
         if (event === 'SIGNED_IN' || event === 'TOKEN_REFRESHED') {
-          updateAuthState(newSession);
+          await updateAuthState(newSession);
           setLoading(false);
           return;
         }
         
         // For other events, update state if there's an actual change
         if (session?.access_token !== newSession?.access_token) {
-          updateAuthState(newSession);
+          await updateAuthState(newSession);
           if (loading) setLoading(false);
         }
       }
@@ -152,7 +226,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         
         if (mounted) {
           console.log('AuthContext: Initial session:', initialSession?.user?.email || 'No session');
-          updateAuthState(initialSession);
+          await updateAuthState(initialSession);
           setLoading(false);
         }
       } catch (err) {
